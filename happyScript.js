@@ -1,10 +1,10 @@
 async function updateLinks() {
     const urlParams = new URLSearchParams(window.location.search);
-    const storeId = urlParams.get('store'); // Get store ID from URL
+    const storeId = urlParams.get('store');
 
     if (storeId) {
         
-        const response = await fetch('https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/execL'); // Replace with your Google Apps Script URL
+        const response = await fetch('https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'); 
         const data = await response.json();
 
         
@@ -14,6 +14,10 @@ async function updateLinks() {
             
             document.getElementById('google-link').href = store.googleLink;
             document.getElementById('yelp-link').href = store.yelpLink;
+
+            
+            const homeButton = document.querySelector('.home-button');
+            homeButton.href = `index.html?store=${storeId}`;
         }
     }
 }
