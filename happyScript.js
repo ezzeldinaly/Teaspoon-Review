@@ -4,7 +4,7 @@ async function updateLinks() {
 
     if (storeId) {
         
-        const response = await fetch('https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'); 
+        const response = await fetch('YOUR_GOOGLE_SCRIPT_URL'); 
         const data = await response.json();
 
         
@@ -17,7 +17,7 @@ async function updateLinks() {
 
             
             const homeButton = document.querySelector('.home-button');
-            homeButton.href = `index.html?store=${storeId}`;
+            homeButton.href = `index.html?store=${storeId}`; 
         }
     }
 }
