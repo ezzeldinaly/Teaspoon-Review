@@ -22,20 +22,28 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 
-document.getElementById('feedback-form').addEventListener('submit', async function(event) {
-    event.preventDefault();
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'; 
-    const formData = new FormData(event.target); 
+document.getElementById('feedback-form').addEventListener('submit', async function(event) {
+    event.preventDefault(); 
+
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'; // Replace with your Google Apps Script URL
+    const formData = new FormData(event.target);
 
     try {
         const response = await fetch(scriptURL, { method: 'POST', body: formData }); 
-        const result = await response.json();
 
+  
+        const text = await response.text(); 
+        console.log('Response:', text); 
         
+       
+        const result = JSON.parse(text);
+
+
         document.getElementById('form-response').textContent = result.message;
     } catch (error) {
         console.error('Error submitting form:', error);
         document.getElementById('form-response').textContent = 'An error occurred while submitting your feedback. Please try again.';
     }
 });
+
