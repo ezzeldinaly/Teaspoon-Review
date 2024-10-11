@@ -2,12 +2,19 @@ async function updateStoreName() {
     const urlParams = new URLSearchParams(window.location.search);
     const storeId = urlParams.get('store'); 
 
-    console.log('Store ID from URL:', storeId); 
+    console.log('Store ID from URL:', storeId);
 
     if (storeId) {
-        
         try {
+            
             const response = await fetch('https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'); 
+            
+            
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`); 
+            }
+
+            
             const data = await response.json();
 
             console.log('Fetched store data:', data); 
@@ -31,7 +38,7 @@ async function updateStoreName() {
             }
         } catch (error) {
             console.error('Error fetching store data:', error);
-            document.getElementById('store-name').textContent = 'Error fetching store data.';
+            document.getElementById('store-name').textContent = `Error fetching store data: ${error.message}`;
         }
     } else {
         console.log('No store ID found in URL.');
