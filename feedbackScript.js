@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (storeId) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'); 
+            const response = await fetch('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); 
             const data = await response.json();
             const store = data.stores.find(s => s.id == storeId);
 
@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function(event) {
     event.preventDefault(); 
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'; // Replace with your Google Apps Script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Replace with your Google Apps Script URL
     const formData = new FormData(event.target);
 
     try {
