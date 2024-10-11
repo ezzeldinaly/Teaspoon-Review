@@ -23,13 +23,15 @@ async function updateStoreName() {
                 // Update the store name dynamically
                 document.getElementById('store-name').textContent = `Welcome to ${store.storeName}`;
 
-                // Update the thumbs-up link to pass the store ID to happy.html
+                // Update the thumbs-up link
                 const thumbsUpLink = document.getElementById('thumbs-up-link');
                 thumbsUpLink.href = `happy.html?store=${storeId}`;
+                console.log('Thumbs Up Link:', thumbsUpLink.href); // Log the link
 
-                // Update the thumbs-down link to pass the store ID to feedback.html
+                // Update the thumbs-down link
                 const thumbsDownLink = document.getElementById('thumbs-down-link');
                 thumbsDownLink.href = `feedback.html?store=${storeId}`;
+                console.log('Thumbs Down Link:', thumbsDownLink.href); // Log the link
             } else {
                 console.error('Store not found for ID:', storeId);
                 document.getElementById('store-name').textContent = 'Store not found';
