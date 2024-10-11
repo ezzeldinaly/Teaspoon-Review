@@ -26,15 +26,16 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     event.preventDefault();
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbx7BOwQr9FVPFZiX0KmTfygUTFCG8Uafp-TBg1vcsuvmddseGclHFv4iAoQDjWSCam34w/exec'; 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target); 
 
     try {
-        const response = await fetch(scriptURL, { method: 'POST', body: formData });
+        const response = await fetch(scriptURL, { method: 'POST', body: formData }); 
         const result = await response.json();
 
         
         document.getElementById('form-response').textContent = result.message;
     } catch (error) {
+        console.error('Error submitting form:', error);
         document.getElementById('form-response').textContent = 'An error occurred while submitting your feedback. Please try again.';
     }
 });
