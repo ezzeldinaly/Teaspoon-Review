@@ -32,6 +32,15 @@ async function updateStoreName() {
                 const thumbsDownLink = document.getElementById('thumbs-down-link');
                 thumbsDownLink.href = `feedback.html?store=${storeId}`;
                 console.log('Thumbs Down Link:', thumbsDownLink.href); // Log the link
+
+                // Add click event listeners
+                thumbsUpLink.addEventListener('click', function(event) {
+                    console.log('Thumbs Up clicked:', this.href); // Log to verify link
+                });
+
+                thumbsDownLink.addEventListener('click', function(event) {
+                    console.log('Thumbs Down clicked:', this.href); // Log to verify link
+                });
             } else {
                 console.error('Store not found for ID:', storeId);
                 document.getElementById('store-name').textContent = 'Store not found';
