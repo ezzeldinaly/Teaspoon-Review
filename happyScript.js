@@ -4,33 +4,36 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (storeId) {
         try {
-            const response = await fetch('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); // Replace with your actual URL
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`);
+            // Check sessionStorage for cached data
+            const cachedData = sessionStorage.getItem('storeData');
+            let data;
+
+            if (cachedData) {
+                data = JSON.parse(cachedData);
+            } else {
+                const response = await fetchWithTimeout('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec');
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                data = await response.json();
+                sessionStorage.setItem('storeData', JSON.stringify(data));
             }
 
-            const data = await response.json();
             const store = data.stores.find(s => s.id == storeId);
-
             if (store) {
-                // Set Google link or hide button if empty
+                // Only show Google button if link is valid
                 const googleLink = document.getElementById('google-link');
-                if (store.googleLink && store.googleLink.trim() !== "") {
+                if (store.googleLink) {
                     googleLink.href = store.googleLink;
-                } else {
-                    googleLink.style.display = 'none'; // Hide if empty
+                    googleLink.style.display = 'inline'; // Show button if link is available
                 }
 
-                // Set Yelp link or hide button if empty
+                // Only show Yelp button if link is valid
                 const yelpLink = document.getElementById('yelp-link');
-                if (store.yelpLink && store.yelpLink.trim() !== "") {
+                if (store.yelpLink) {
                     yelpLink.href = store.yelpLink;
-                } else {
-                    yelpLink.style.display = 'none'; // Hide if empty
+                    yelpLink.style.display = 'inline'; // Show button if link is available
                 }
 
-                // Set the "Return to Home" button link with store ID
+                // Set "Return to Home" link
                 const homeButton = document.querySelector('.home-button');
                 homeButton.href = `index.html?store=${storeId}`;
             } else {
