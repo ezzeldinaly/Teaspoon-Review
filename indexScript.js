@@ -1,59 +1,54 @@
 async function updateStoreName() {
     const urlParams = new URLSearchParams(window.location.search);
-    const storeId = urlParams.get('store'); // Get store ID from URL
-
-    console.log('Store ID from URL:', storeId); // Log the store ID
+    const storeId = urlParams.get('store');
+    const storeNameElement = document.getElementById('store-name');
+    storeNameElement.textContent = 'Loading store...'; // Placeholder text while loading
 
     if (storeId) {
         try {
-            // Fetch the JSON data from Google Apps Script
-            const response = await fetch('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); // Replace with your Google Apps Script URL
-            
-            if (!response.ok) {
-                throw new Error(`HTTP error! status: ${response.status}`); // Log HTTP error status
+            // Check if the store data is in cache (sessionStorage)
+            const cachedData = sessionStorage.getItem('storeData');
+            let data;
+
+            if (cachedData) {
+                // Use cached data if available
+                data = JSON.parse(cachedData);
+            } else {
+                // Fetch data if not cached
+                const response = await fetchWithTimeout('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); // Use a function with timeout
+                if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+                data = await response.json();
+
+                // Cache the fetched data in sessionStorage
+                sessionStorage.setItem('storeData', JSON.stringify(data));
             }
 
-            const data = await response.json();
-
-            console.log('Fetched store data:', data); // Log the fetched store data
-
             const store = data.stores.find(s => s.id == storeId);
-
             if (store) {
-                // Update the store name dynamically
-                document.getElementById('store-name').textContent = `Welcome to ${store.storeName}`;
-
-                // Update the thumbs-up link
-                const thumbsUpLink = document.getElementById('thumbs-up-link');
-                thumbsUpLink.href = `happy.html?store=${storeId}`;
-                console.log('Thumbs Up Link:', thumbsUpLink.href); // Log the link
-
-                // Update the thumbs-down link
-                const thumbsDownLink = document.getElementById('thumbs-down-link');
-                thumbsDownLink.href = `feedback.html?store=${storeId}`;
-                console.log('Thumbs Down Link:', thumbsDownLink.href); // Log the link
-
-                // Add click event listeners
-                thumbsUpLink.addEventListener('click', function(event) {
-                    console.log('Thumbs Up clicked:', this.href); // Log to verify link
-                });
-
-                thumbsDownLink.addEventListener('click', function(event) {
-                    console.log('Thumbs Down clicked:', this.href); // Log to verify link
-                });
+                storeNameElement.textContent = `Welcome to ${store.storeName}`;
+                
+                // Set thumbs-up and thumbs-down links
+                document.getElementById('thumbs-up-link').href = `happy.html?store=${storeId}`;
+                document.getElementById('thumbs-down-link').href = `feedback.html?store=${storeId}`;
             } else {
+                storeNameElement.textContent = 'Store not found';
                 console.error('Store not found for ID:', storeId);
-                document.getElementById('store-name').textContent = 'Store not found';
             }
         } catch (error) {
             console.error('Error fetching store data:', error);
-            document.getElementById('store-name').textContent = 'Error fetching store data.';
+            storeNameElement.textContent = 'Error loading store data';
         }
     } else {
-        console.log('No store ID found in URL.');
-        document.getElementById('store-name').textContent = 'No store specified';
+        storeNameElement.textContent = 'No store specified';
     }
 }
 
-// Call the function on page load
+// Function to add timeout to fetch requests
+async function fetchWithTimeout(url, options = {}, timeout = 5000) {
+    return Promise.race([
+        fetch(url, options),
+        new Promise((_, reject) => setTimeout(() => reject(new Error('Request timeout')), timeout))
+    ]);
+}
+
 window.onload = updateStoreName;
