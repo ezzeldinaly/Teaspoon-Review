@@ -19,18 +19,18 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             const store = data.stores.find(s => s.id == storeId);
             if (store) {
-                // Only show Google button if link is valid
+                // Show Google button only if link is available
                 const googleLink = document.getElementById('google-link');
-                if (store.googleLink) {
+                if (store.googleLink && store.googleLink.trim() !== "") {
                     googleLink.href = store.googleLink;
-                    googleLink.style.display = 'inline'; // Show button if link is available
+                    googleLink.style.display = 'inline'; // Show if link is valid
                 }
 
-                // Only show Yelp button if link is valid
+                // Show Yelp button only if link is available
                 const yelpLink = document.getElementById('yelp-link');
-                if (store.yelpLink) {
+                if (store.yelpLink && store.yelpLink.trim() !== "") {
                     yelpLink.href = store.yelpLink;
-                    yelpLink.style.display = 'inline'; // Show button if link is available
+                    yelpLink.style.display = 'inline'; // Show if link is valid
                 }
 
                 // Set "Return to Home" link
