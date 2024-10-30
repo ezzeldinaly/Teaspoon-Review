@@ -45,7 +45,7 @@ h1 {
 
 /* Emoji Container */
 .emoji-container {
-    display: flex;
+    display: block;
     justify-content: space-around;
     gap: 50px;
     margin-bottom: 20px;
