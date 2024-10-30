@@ -11,8 +11,6 @@
     <div class="container">
         <h1>We Value Your Feedback</h1>
         <form id="feedback-form">
-            <input type="hidden" id="store-name" name="store-name" value="">
-            
             <label for="name">Name:</label>
             <input type="text" id="name" name="name" required>
             
@@ -21,24 +19,19 @@
 
             <label for="dropdown">Type of Complaint:</label>
             <select id="dropdown" name="options" required>
+                <option value="" disabled selected>Select an option</option>
                 <option value="Product Issue">Product Issue</option>
                 <option value="Service Issue">Service Issue</option>
                 <option value="General Feedback">General Feedback</option>
                 <option value="Other">Other</option>
             </select>
             
-            <label for="feedback-message" style="margin-top: 20px;">Feedback:</label>
+            <label for="feedback-message">Feedback:</label>
             <textarea id="feedback-message" name="message" rows="4" required></textarea>
 
-            
             <input type="submit" value="Send Feedback">
         </form>
-
-        <p id="form-response"></p>
         <a href="#" class="home-button">Return to Home</a>
     </div>
-
- 
-    <script src="feedbackScript.js"></script>
 </body>
 </html>
