@@ -188,21 +188,36 @@ select {
 }
 
 .container select {
-    appearance: none;
-    background-color: #f0f0f0;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 10px 16px;
-    font-size: 16px;
+    appearance: none; /* Remove default styling */
+    background-color: #f0f0f0; /* Light gray background */
+    border: 1px solid #ccc; /* Light border color */
+    border-radius: 8px; /* Rounded corners */
+    padding: 10px 16px; /* Padding for spacing */
+    font-size: 16px; /* Font size */
+    color: #333; /* Text color */
+    outline: none; /* Remove outline on focus */
+    width: 100%; /* Full width for responsive design */
+    max-width: 300px; /* Set a max width */
+    cursor: pointer; /* Pointer cursor on hover */
+    transition: border-color 0.3s ease; /* Smooth transition */
+    margin-bottom: 20px; /* Add space below the dropdown */
+    padding-right: 30px; /* Make space for the custom arrow */
+    position: relative; /* Position for custom arrow */
+}
+
+/* Custom Arrow */
+.container select::after {
+    content: "▼"; /* Arrow character */
+    font-size: 12px;
     color: #333;
-    outline: none;
-    width: 100%;
-    max-width: 300px;
-    cursor: pointer;
-    transition: border-color 0.3s ease;
+    position: absolute;
+    right: 10px; /* Position the arrow within padding area */
+    top: 50%;
+    transform: translateY(-50%); /* Center vertically */
+    pointer-events: none; /* Allow clicks to pass through */
 }
 
+/* Focus styling */
 .container select:focus {
-    border-color: #007BFF;
+    border-color: #007BFF; /* Blue border on focus */
 }
-
