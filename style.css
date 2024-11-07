@@ -43,30 +43,40 @@ h1 {
     margin-bottom: 30px;
 }
 
-/* Emoji Container */
 .emoji-container {
-    display: flex; /* Use Flexbox layout */
-    justify-content: center; /* Center the elements */
-    gap: 100px; /* Space between emojis */
+    display: flex;
+    justify-content: center;
+    gap: 50px; /* Controls spacing between the buttons */
+    align-items: center;
     margin-bottom: 20px;
 }
 
-
 .emoji {
-    width: 80px;
-    height: 80px;
     margin: 0;
     padding: 0;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border-radius: 50%;
-    border: 2px solid transparent;
+    width: 50px; /* Adjust size as needed */
+    height: 50px;
+    background: none; /* Remove default button background */
+    border: none; /* Remove button border */
+    font-size: 40px; /* Set the size of the emoji */
+    cursor: pointer; /* Add a pointer cursor for better UX */
+}
+
+.smiley {
+    color: green; /* Color for smiley face */
+}
+
+.neutral {
+    color: orange; /* Color for neutral face */
+}
+
+.frowny {
+    color: red; /* Color for frowny face */
 }
 
 .emoji:hover {
-    transform: scale(1.2);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
-    border: 2px solid #d4af37;
+    transform: scale(1.1); /* Optional: Add a hover effect to emphasize interaction */
+    transition: transform 0.2s ease;
 }
 
 /* Review Links */
