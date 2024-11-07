@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaspoon Rating</title>
+    <title>Teaspoon Feedback</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <img src="img/logoTeaspoon.png" alt="Teaspoon Logo" class="logo">
+        <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
         <h1>We Value Your Feedback</h1>
-        
         
         <h2 id="store-name">Loading store...</h2>
         
         <p class="subheading">Please choose an option below:</p>
         <div class="emoji-container">
-            <button class="emoji smiley" onclick="window.location.href='happy.html'">😊</button>
-            <button class="emoji neutral" onclick="window.location.href='feedback.html'">😐</button>
-            <button class="emoji frowny" onclick="window.location.href='feedback.html'">☹️</button>
-        </div>
+            <!-- Smiley (Green) Emoji link -->
+            <a id="smiley-link" href="#">
+                <span class="emoji" id="smiley" style="color: green;">😊</span>
+            </a>
 
+            <!-- Neutral (Orange) Emoji link -->
+            <a id="neutral-link" href="#"> 
+                <span class="emoji" id="neutral" style="color: orange;">😐</span>
+            </a>
+
+            <!-- Frowny (Red) Emoji link -->
+            <a id="frowny-link" href="#"> 
+                <span class="emoji" id="frowny" style="color: red;">☹️</span>
+            </a>
+        </div>
     </div>
     
-    
-    <script src="indexScript.js"></script> 
+    <script src="indexScript.js"></script>
 </body>
 </html>
