@@ -64,11 +64,6 @@ h1 {
     transform: scale(1.1);
 }
 
-/* Subheading styling */
-.subheading {
-    font-size: 1.2rem;
-    margin-top: 10px;
-}
 
 /* Store name */
 #store-name {
