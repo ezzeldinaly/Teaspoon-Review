@@ -3,35 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feedback Form</title>
+    <title>Teaspoon Feedback</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
+        <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
         <h1>We Value Your Feedback</h1>
-        <form id="feedback-form">
-            <label for="name">Name:</label>
-            <input type="text" id="name" name="name" required>
-            
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+        
+        <p class="subheading">Please choose an option from the list below:</p>
 
-            <label for="dropdown">Type of Complaint:</label>
-            <select id="dropdown" name="options" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Product Issue">Product Issue</option>
-                <option value="Service Issue">Service Issue</option>
-                <option value="General Feedback">General Feedback</option>
-                <option value="Other">Other</option>
+        <!-- Updated Dropdown Menu -->
+        <form action="/submit-feedback" method="POST">
+            <label for="feedback-category">Select a category:</label>
+            <select name="feedback-category" id="feedback-category" required>
+                <option value="1">Customer Service</option>
+                <option value="2">Drink quality</option>
+                <option value="3">Store cleanliness</option>
+                <option value="4">Other</option>
             </select>
             
-            <label for="feedback-message">Feedback:</label>
-            <textarea id="feedback-message" name="message" rows="4" required></textarea>
+            <label for="feedback-text">Your Feedback:</label>
+            <textarea name="feedback-text" id="feedback-text" rows="4" required></textarea>
 
-            <input type="submit" value="Send Feedback">
+            <button type="submit">Submit Feedback</button>
         </form>
-        <a href="#" class="home-button">Return to Home</a>
     </div>
+    
+    <script src="indexScript.js"></script>
 </body>
 </html>
