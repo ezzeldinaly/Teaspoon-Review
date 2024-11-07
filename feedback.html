@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teaspoon Feedback</title>
+    <title>Feedback Form</title>
     <link rel="icon" type="image/x-icon" href="img/favicon.ico">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -11,35 +10,28 @@
     <div class="container">
         <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
         <h1>We Value Your Feedback</h1>
-        
-        <p class="subheading">Please choose an option from the list below:</p>
+        <form id="feedback-form">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
 
-        <form action="/submit-feedback" method="POST">
-    <label for="name">Your Name:</label>
-    <input type="text" id="name" name="name" required>
+            <label for="dropdown">Type of Complaint:</label>
+            <select id="dropdown" name="options" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Product Issue">Customer Service</option>
+                <option value="Service Issue">Drink Quality</option>
+                <option value="General Feedback">Store Cleanliness</option>
+                <option value="Other">Other</option>
+            </select>
+            
+            <label for="feedback-message">Feedback:</label>
+            <textarea id="feedback-message" name="message" rows="4" required></textarea>
 
-    <label for="email">Your Email:</label>
-    <input type="email" id="email" name="email" required>
-
-    <label for="feedback-category">Select a category:</label>
-    <select name="feedback-category" id="feedback-category" required>
-        <option value="1">Customer Service</option>
-        <option value="2">Drink quality</option>
-        <option value="3">Store cleanliness</option>
-        <option value="4">Other</option>
-    </select>
-
-    <label for="feedback-text">Your Feedback:</label>
-    <textarea name="feedback-text" id="feedback-text" rows="4" required></textarea>
-
-    <button type="submit">Submit Feedback</button>
-</form>
-
-
-            <button type="submit">Submit Feedback</button>
+            <input type="submit" value="Send Feedback">
         </form>
+        <a href="#" class="home-button">Return to Home</a>
     </div>
-    
-    <script src="indexScript.js"></script>
 </body>
 </html>
