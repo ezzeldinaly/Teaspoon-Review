@@ -89,7 +89,6 @@ a {
     background-color: #e09e1e !important; /* Ensure hover color is solid */
     transform: translateY(-3px);
 }
-
 /* Form Styling */
 form {
     text-align: left;
@@ -121,9 +120,9 @@ form textarea {
     min-height: 150px; /* Make the textarea bigger */
 }
 
+form textarea:focus,
 form input[type="text"]:focus,
-form input[type="email"]:focus,
-form textarea:focus {
+form input[type="email"]:focus {
     border-color: #d4af37;
     box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
     outline: none;
@@ -166,6 +165,7 @@ form input[type="submit"]:hover {
     background-color: #e09e1e;
     transform: translateY(-3px);
 }
+
 
 
 .contact-link {
