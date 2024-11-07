@@ -45,11 +45,12 @@ h1 {
 
 /* Emoji Container */
 .emoji-container {
-    display: block;
-    justify-content: space-around;
-    gap: 50px;
+    display: flex; /* Use Flexbox layout */
+    justify-content: center; /* Center the elements */
+    gap: 50px; /* Space between emojis */
     margin-bottom: 20px;
 }
+
 
 .emoji {
     width: 80px;
