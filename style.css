@@ -89,54 +89,35 @@ a {
     box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
-/* Form Styling */
+/* Form Styles */
 form {
-    text-align: left;
-    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
     max-width: 400px;
+    margin: 0 auto;
 }
 
-form label {
-    font-size: 16px;
-    color: #333;
-}
-
-form input[type="text"],
-form input[type="email"],
-form textarea {
-    width: 100%;
-    padding: 12px;
-    margin: 10px 0 20px;
+select, textarea {
+    padding: 10px;
+    font-size: 1rem;
     border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: inset 0 3px 8px rgba(0, 0, 0, 0.1);
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 4px;
 }
 
-form input[type="text"]:focus,
-form input[type="email"]:focus,
-form textarea:focus {
-    border-color: #d4af37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
-    outline: none;
-}
-
-form input[type="submit"] {
-    background-color: #d4af37;
-    color: #fff;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 8px;
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
     cursor: pointer;
-    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    font-weight: bold;
+    border: none;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 4px;
+    transition: background-color 0.3s;
 }
 
-form input[type="submit"]:hover {
-    background-color: #b08a2e;
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+button:hover {
+    background-color: #45a049;
 }
 
 /* Home Button */
