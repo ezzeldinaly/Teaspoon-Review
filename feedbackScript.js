@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 document.getElementById('store-name').value = store.storeName;
 
                 
-                const homeButton = document.querySelector('home-button');
+                const homeButton = document.querySelector('home-link');
                 homeButton.href = `index.html?store=${storeId}`;
             }
         } catch (error) {
