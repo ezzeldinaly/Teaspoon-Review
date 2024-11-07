@@ -103,7 +103,7 @@ form label {
     margin-bottom: 10px; /* Add space between label and input */
 }
 
-form select,
+form select, /* Style the dropdown */
 form input[type="text"],
 form input[type="email"],
 form textarea {
@@ -116,15 +116,21 @@ form textarea {
     transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
+form select {
+    background-color: #fff; /* White background */
+    font-size: 16px;
+}
+
 form textarea {
     min-height: 150px; /* Make the textarea bigger */
 }
 
-form textarea:focus,
+form select:focus,
 form input[type="text"]:focus,
-form input[type="email"]:focus {
-    border-color: #d4af37;
-    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: #d4af37; /* Highlight border color */
+    box-shadow: 0 0 10px rgba(212, 175, 55, 0.3); /* Highlight shadow */
     outline: none;
 }
 
@@ -165,6 +171,7 @@ form input[type="submit"]:hover {
     background-color: #e09e1e;
     transform: translateY(-3px);
 }
+
 
 
 
