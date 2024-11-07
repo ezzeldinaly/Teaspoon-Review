@@ -43,42 +43,38 @@ h1 {
     margin-bottom: 30px;
 }
 
+./* Emoji container styling */
 .emoji-container {
     display: flex;
-    justify-content: center;
-    gap: 50px; /* Controls spacing between the buttons */
+    justify-content: space-around;
     align-items: center;
+    padding: 10px;
+}
+
+/* Emoji styling */
+.emoji {
+    font-size: 3rem;
+    cursor: pointer;
+    margin: 0 15px;
+    transition: transform 0.3s ease;
+}
+
+/* Hover effect for emojis */
+.emoji:hover {
+    transform: scale(1.1);
+}
+
+/* Subheading styling */
+.subheading {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+/* Store name */
+#store-name {
+    font-size: 1.5rem;
     margin-bottom: 20px;
 }
-
-.emoji {
-    margin: 0;
-    padding: 0;
-    width: 50px; /* Adjust size as needed */
-    height: 50px;
-    background: none; /* Remove default button background */
-    border: none; /* Remove button border */
-    font-size: 40px; /* Set the size of the emoji */
-    cursor: pointer; /* Add a pointer cursor for better UX */
-}
-
-.smiley {
-    color: green; /* Color for smiley face */
-}
-
-.neutral {
-    color: orange; /* Color for neutral face */
-}
-
-.frowny {
-    color: red; /* Color for frowny face */
-}
-
-.emoji:hover {
-    transform: scale(1.1); /* Optional: Add a hover effect to emphasize interaction */
-    transition: transform 0.2s ease;
-}
-
 /* Review Links */
 .review-links {
     display: flex;
