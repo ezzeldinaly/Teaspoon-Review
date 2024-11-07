@@ -73,19 +73,20 @@ a {
 }
 
 .review-links a {
-    background-color: #f0b323; /* Solid background */
-    color: #fff;
+    background-color: #f0b323 !important; /* Force solid background */
+    color: #fff !important; /* Ensure text is white */
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    border: none; /* No border */
-    box-shadow: none; /* Removed box-shadow for testing */
+    box-shadow: none !important; /* Force no box-shadow */
+    opacity: 1 !important; /* Ensure full opacity */
     font-weight: bold;
+    border: none;
 }
 
 .review-links a:hover {
-    background-color: #e09e1e;
+    background-color: #e09e1e !important; /* Ensure hover color is solid */
     transform: translateY(-3px);
 }
 
@@ -122,14 +123,15 @@ form textarea:focus {
 }
 
 form input[type="submit"] {
-    background-color: #f0b323;
+    background-color: #f0b323 !important; /* Force solid background */
     color: #fff;
     padding: 12px 24px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: none; /* Removed box-shadow for testing */
+    box-shadow: none !important; /* Force no box-shadow */
+    opacity: 1 !important; /* Ensure full opacity */
     font-weight: bold;
 }
 
@@ -140,13 +142,14 @@ form input[type="submit"]:hover {
 
 /* Home Button */
 .home-button {
-    background-color: #f0b323;
+    background-color: #f0b323 !important; /* Force solid background */
     color: #fff;
     text-decoration: none;
     padding: 12px 24px;
     border-radius: 8px;
     transition: background-color 0.3s ease, transform 0.3s ease;
-    box-shadow: none; /* Removed box-shadow for testing */
+    box-shadow: none !important; /* Force no box-shadow */
+    opacity: 1 !important; /* Ensure full opacity */
     font-weight: bold;
     display: inline-block;
     margin-top: 20px;
