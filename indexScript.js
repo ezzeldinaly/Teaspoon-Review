@@ -25,11 +25,12 @@ async function updateStoreName() {
 
             const store = data.stores.find(s => s.id == storeId);
             if (store) {
-                storeNameElement.textContent = `Welcome to ${store.storeName}`;
+                storeNameElement.textContent = `Teaspoon ${store.storeName}`;
                 
-                // Set thumbs-up and thumbs-down links
-                document.getElementById('thumbs-up-link').href = `happy.html?store=${storeId}`;
-                document.getElementById('thumbs-down-link').href = `feedback.html?store=${storeId}`;
+                // Set links for emojis
+                document.getElementById('smiley-link').href = `happy.html?store=${storeId}`;
+                document.getElementById('neutral-link').href = `feedback.html?store=${storeId}`;
+                document.getElementById('frowny-link').href = `feedback.html?store=${storeId}`;
             } else {
                 storeNameElement.textContent = 'Store not found';
                 console.error('Store not found for ID:', storeId);
