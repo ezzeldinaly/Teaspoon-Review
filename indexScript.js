@@ -27,7 +27,7 @@ async function updateStoreName() {
             if (store) {
                 storeNameElement.textContent = `Teaspoon ${store.storeName}`;
                 
-                // Set links for emojis
+                // Set links for the emojis
                 document.getElementById('smiley-link').href = `happy.html?store=${storeId}`;
                 document.getElementById('neutral-link').href = `feedback.html?store=${storeId}`;
                 document.getElementById('frowny-link').href = `feedback.html?store=${storeId}`;
