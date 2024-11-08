@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                 document.getElementById('store-name').value = store.storeName;
 
                 // Dynamically set the "Return Home" link
-                const homeButton = document.querySelector('#home-link');  // Corrected to select by ID
+                const homeButton = document.querySelector('.home-button');  // Corrected to select by ID
                 homeButton.href = `index.html?store=${storeId}`;  // Set the link to index with the store ID
             }
         } catch (error) {
