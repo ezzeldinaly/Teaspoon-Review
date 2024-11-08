@@ -11,12 +11,17 @@ document.addEventListener('DOMContentLoaded', async function () {
             const store = data.stores.find(s => s.id == storeId);
 
             if (store) {
-                // Set store name in the input field (if you have one for store name)
-                document.getElementById('store-name').value = store.storeName;
+                // Set store name in an input field (if applicable)
+                const storeNameElement = document.getElementById('store-name');
+                if (storeNameElement) {
+                    storeNameElement.value = store.storeName;
+                }
 
-                // Dynamically set the "Return Home" link
-                const homeButton = document.querySelector('.home-button');  // Corrected to select by ID
-                homeButton.href = `index.html?store=${storeId}`;  // Set the link to index with the store ID
+                // Set the "Return Home" button link
+                const homeButton = document.querySelector('.home-button');
+                if (homeButton) {
+                    homeButton.href = `index.html?store=${storeId}`;
+                }
             }
         } catch (error) {
             console.error('Error fetching store data:', error);
@@ -33,7 +38,6 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
 
     try {
         const response = await fetch(scriptURL, { method: 'POST', body: formData }); 
-
         const text = await response.text(); 
         console.log('Response:', text); 
         
