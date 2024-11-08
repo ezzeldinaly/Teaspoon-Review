@@ -55,20 +55,17 @@ h1 {
     transition: transform 0.2s ease, filter 0.2s ease;
 }
 
-/* Green hover effect for smiley */
-.emoji-smiley:hover {
+#smiley:hover {
     color: green;
     transform: scale(1.2);
 }
 
-/* Orange hover effect for neutral */
-.emoji-neutral:hover {
+#neutral:hover {
     color: orange;
     transform: scale(1.2);
 }
 
-/* Red hover effect for frowning */
-.emoji-frowny:hover {
+#frowny:hover {
     color: red;
     transform: scale(1.2);
 }
