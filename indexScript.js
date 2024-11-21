@@ -2,24 +2,23 @@ async function updateStoreName() {
     const urlParams = new URLSearchParams(window.location.search);
     const storeId = urlParams.get('store');
     const storeNameElement = document.getElementById('store-name');
-    storeNameElement.textContent = 'Loading store...'; // Placeholder text while loading
+    storeNameElement.textContent = 'Loading store...'; 
 
     if (storeId) {
         try {
-            // Check if the store data is in cache (sessionStorage)
+
             const cachedData = sessionStorage.getItem('storeData');
             let data;
 
             if (cachedData) {
-                // Use cached data if available
+          
                 data = JSON.parse(cachedData);
             } else {
-                // Fetch data if not cached
+       
                 const response = await fetchWithTimeout('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); // Use a function with timeout
                 if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
                 data = await response.json();
 
-                // Cache the fetched data in sessionStorage
                 sessionStorage.setItem('storeData', JSON.stringify(data));
             }
 
@@ -27,7 +26,6 @@ async function updateStoreName() {
             if (store) {
                 storeNameElement.textContent = `Teaspoon ${store.storeName}`;
                 
-                // Set links for the emojis
                 document.getElementById('smiley-link').href = `happy.html?store=${storeId}`;
                 document.getElementById('neutral-link').href = `feedback.html?store=${storeId}`;
                 document.getElementById('frowny-link').href = `feedback.html?store=${storeId}`;
@@ -44,7 +42,7 @@ async function updateStoreName() {
     }
 }
 
-// Function to add timeout to fetch requests
+
 async function fetchWithTimeout(url, options = {}, timeout = 5000) {
     return Promise.race([
         fetch(url, options),
