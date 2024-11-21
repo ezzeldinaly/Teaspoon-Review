@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     if (storeId) {
         try {
-            // Check sessionStorage for cached data
+           
             const cachedData = sessionStorage.getItem('storeData');
             let data;
 
@@ -19,21 +19,20 @@ document.addEventListener('DOMContentLoaded', async function () {
 
             const store = data.stores.find(s => s.id == storeId);
             if (store) {
-                // Show Google button only if link is available
+               
                 const googleLink = document.getElementById('google-link');
                 if (store.googleLink && store.googleLink.trim() !== "") {
                     googleLink.href = store.googleLink;
-                    googleLink.style.display = 'inline'; // Show if link is valid
+                    googleLink.style.display = 'inline'; 
                 }
 
-                // Show Yelp button only if link is available
+               
                 const yelpLink = document.getElementById('yelp-link');
                 if (store.yelpLink && store.yelpLink.trim() !== "") {
                     yelpLink.href = store.yelpLink;
-                    yelpLink.style.display = 'inline'; // Show if link is valid
+                    yelpLink.style.display = 'inline'; 
                 }
 
-                // Set "Return to Home" link
                 const homeButton = document.querySelector('.home-button');
                 homeButton.href = `index.html?store=${storeId}`;
             } else {
