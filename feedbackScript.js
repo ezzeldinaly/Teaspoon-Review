@@ -30,23 +30,30 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 // Form submission handler
-document.getElementById('feedback-form').addEventListener('submit', async function(event) {
-    event.preventDefault(); 
+document.getElementById('feedback-form').addEventListener('submit', async function (event) {
+    event.preventDefault(); // Prevent the default form submission behavior
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Replace with your Google Apps Script URL
     const formData = new FormData(event.target);
 
     try {
+        // Send the form data to your backend
         const response = await fetch(scriptURL, { method: 'POST', body: formData }); 
-        const text = await response.text(); 
-        console.log('Response:', text); 
-        
-        const result = JSON.parse(text);  // Assuming the response is JSON
-
-        // Display a response message to the user
-        document.getElementById('form-response').textContent = result.message;
+        if (response.ok) {
+            // Replace the form with a thank-you message
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
+                <h1>Thank You!</h1>
+                <p class="subheading">We appreciate your feedback. Your input helps us improve.</p>
+                <a href="#" class="home-button">Return to Home</a>
+            `;
+        } else {
+            console.error('Error submitting form:', await response.text());
+            alert('Something went wrong. Please try again.');
+        }
     } catch (error) {
         console.error('Error submitting form:', error);
-        document.getElementById('form-response').textContent = 'An error occurred while submitting your feedback. Please try again.';
+        alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
