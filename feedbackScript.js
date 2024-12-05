@@ -46,7 +46,6 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
                 <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
                 <h1>Thank You!</h1>
                 <p class="subheading">We appreciate your feedback. Your input helps us improve.</p>
-                <a href="#" class="home-button">Return to Home</a>
             `;
         } else {
             console.error('Error submitting form:', await response.text());
