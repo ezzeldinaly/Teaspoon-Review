@@ -2,6 +2,8 @@ document.addEventListener('DOMContentLoaded', async function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const storeId = urlParams.get('store');
+    const complaintType = document.getElementById('comptype').value;
+        alert('Complaint Type: ' + complaintType); 
 
     if (storeId) {
         try {
