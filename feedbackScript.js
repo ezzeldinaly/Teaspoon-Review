@@ -1,25 +1,19 @@
 document.addEventListener('DOMContentLoaded', async function () {
-
     const urlParams = new URLSearchParams(window.location.search);
     const storeId = urlParams.get('store');
-    const complaintType = document.getElementById('comptype').value;
-        alert('Complaint Type: ' + complaintType); 
-
+    
     if (storeId) {
         try {
-
             const response = await fetch('https://script.google.com/macros/s/AKfycbyzJQTEC2Z1mcXBCxKc52maRPSGRxDPQY5nMJ_N-yazEizSJD9_EU6eUHBVIt53KICH1A/exec'); 
             const data = await response.json();
             const store = data.stores.find(s => s.id == storeId);
 
             if (store) {
-       
                 const storeNameElement = document.getElementById('store-name');
                 if (storeNameElement) {
                     storeNameElement.value = store.storeName;
                 }
 
-            
                 const homeButton = document.querySelector('.home-button');
                 if (homeButton) {
                     homeButton.href = `index.html?store=${storeId}`;
@@ -31,18 +25,18 @@ document.addEventListener('DOMContentLoaded', async function () {
     }
 });
 
-
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
-    event.preventDefault(); 
+    event.preventDefault(); // Prevent the default form submission
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Replace with your Google Apps Script URL
     const formData = new FormData(event.target);
+    
+    // Log the form data to check if the complaint type is being passed
+    console.log("Form Data: ", formData);
 
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Google Apps Script URL
     try {
-        
-        const response = await fetch(scriptURL, { method: 'POST', body: formData }); 
+        const response = await fetch(scriptURL, { method: 'POST', body: formData });
         if (response.ok) {
- 
             const container = document.querySelector('.container');
             container.innerHTML = `
                 <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
