@@ -28,28 +28,19 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    const complaintTypeElement = document.getElementById('comptype');
-    let complaintType = complaintTypeElement.value;
+    const complaintType = document.getElementById('comptype').value; // Get complaint type value
+    console.log("Complaint Type Selected:", complaintType); // Log complaint type
 
-    // If a complaint type is selected, ensure it is treated as plain text.
-    if (complaintType === 'Customer Service') {
-        complaintType = 'Customer Service Issue';
-    } else if (complaintType === 'Drink Quality') {
-        complaintType = 'Drink Quality Concern';
-    } else if (complaintType === 'Store Cleanliness') {
-        complaintType = 'Store Cleanliness Issue';
-    } else if (complaintType === 'Other') {
-        complaintType = 'Other Feedback';
-    } else {
-        complaintType = 'No Complaint Type Selected'; // Default text if no type is selected
+    const formData = new FormData(event.target); // Form data
+
+    // Log all form data to ensure everything is being added
+    for (let pair of formData.entries()) {
+        console.log(pair[0] + ': ' + pair[1]);
     }
 
-    // Create formData and append the complaint type (treated as text)
-    const formData = new FormData(event.target);
-    formData.append('comptype', complaintType);  // Append the transformed complaint type
+    formData.append('comptype', complaintType);  // Append complaint type explicitly
 
-    // Submit the form data
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your actual script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your script URL
     try {
         const response = await fetch(scriptURL, { method: 'POST', body: formData });
         if (response.ok) {
@@ -62,6 +53,7 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         console.error('Error submitting form:', error);
     }
 });
+
 
 
 
