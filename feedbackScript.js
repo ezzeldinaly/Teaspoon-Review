@@ -28,38 +28,40 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    // Get the selected complaint type explicitly
-    const complaintType = document.getElementById('comptype').value;
-    
-    // Ensure that complaintType is set in the form data
-    const formData = new FormData(event.target);
+    const complaintTypeElement = document.getElementById('comptype');
+    let complaintType = complaintTypeElement.value;
 
-    // Check if 'comptype' is already in the formData, and only append it if not present
-    if (complaintType && !formData.has('comptype')) {
-        formData.append('comptype', complaintType);
+    // If a complaint type is selected, ensure it is treated as plain text.
+    if (complaintType === 'Customer Service') {
+        complaintType = 'Customer Service Issue';
+    } else if (complaintType === 'Drink Quality') {
+        complaintType = 'Drink Quality Concern';
+    } else if (complaintType === 'Store Cleanliness') {
+        complaintType = 'Store Cleanliness Issue';
+    } else if (complaintType === 'Other') {
+        complaintType = 'Other Feedback';
+    } else {
+        complaintType = 'No Complaint Type Selected'; // Default text if no type is selected
     }
 
-    // Log the form data for debugging purposes
-    console.log("Form Data:", Array.from(formData.entries()));
+    // Create formData and append the complaint type (treated as text)
+    const formData = new FormData(event.target);
+    formData.append('comptype', complaintType);  // Append the transformed complaint type
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Google Apps Script URL
+    // Submit the form data
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your actual script URL
     try {
         const response = await fetch(scriptURL, { method: 'POST', body: formData });
         if (response.ok) {
-            const container = document.querySelector('.container');
-            container.innerHTML = `
-                <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
-                <h1>Thank You!</h1>
-                <p class="subheading">We appreciate your feedback. Your input helps us improve.</p>
-            `;
+            // Handle successful submission
+            console.log('Form submitted successfully.');
         } else {
             console.error('Error submitting form:', await response.text());
-            alert('Something went wrong. Please try again.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);
-        alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
+
 
 
