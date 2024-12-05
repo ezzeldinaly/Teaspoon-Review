@@ -33,8 +33,8 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     
     // Ensure that complaintType is set in the form data
     const formData = new FormData(event.target);
-    
-    // Check if 'comptype' exists in formData, otherwise append it
+
+    // Check if 'comptype' is already in the formData, and only append it if not present
     if (complaintType && !formData.has('comptype')) {
         formData.append('comptype', complaintType);
     }
@@ -61,4 +61,5 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
+
 
