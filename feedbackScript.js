@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-   // Get the selected complaint type explicitly
+    // Get the selected complaint type explicitly
     const complaintType = document.getElementById('comptype').value;
     
     // Ensure that complaintType is set in the form data
@@ -39,6 +39,8 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         formData.append('comptype', complaintType);
     }
 
+    // Log the form data for debugging purposes
+    console.log("Form Data:", Array.from(formData.entries()));
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Google Apps Script URL
     try {
@@ -59,3 +61,4 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
+
