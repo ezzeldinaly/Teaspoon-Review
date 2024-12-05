@@ -28,31 +28,41 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
-    const complaintType = document.getElementById('comptype').value; // Get complaint type value
-    console.log("Complaint Type Selected:", complaintType); // Log complaint type
+    // Get the selected complaint type
+    const complaintType = document.getElementById('comptype').value;
+    console.log("Complaint Type Selected:", complaintType); // Log complaint type for debugging
 
-    const formData = new FormData(event.target); // Form data
+    const formData = new FormData(event.target); // Form data from the form
 
     // Log all form data to ensure everything is being added
     for (let pair of formData.entries()) {
         console.log(pair[0] + ': ' + pair[1]);
     }
 
-    formData.append('comptype', complaintType);  // Append complaint type explicitly
+    // Explicitly add the complaint type to the form data (if not already added)
+    formData.append('comptype', complaintType);
 
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your script URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your actual script URL
     try {
         const response = await fetch(scriptURL, { method: 'POST', body: formData });
         if (response.ok) {
-            // Handle successful submission
-            console.log('Form submitted successfully.');
+            // Handle successful submission (e.g., show success message)
+            const container = document.querySelector('.container');
+            container.innerHTML = `
+                <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
+                <h1>Thank You!</h1>
+                <p class="subheading">We appreciate your feedback. Your input helps us improve.</p>
+            `;
         } else {
             console.error('Error submitting form:', await response.text());
+            alert('Something went wrong. Please try again.');
         }
     } catch (error) {
         console.error('Error submitting form:', error);
+        alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
+
 
 
 
