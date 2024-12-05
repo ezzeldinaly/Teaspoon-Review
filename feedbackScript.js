@@ -28,10 +28,17 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent the default form submission
 
+   // Get the selected complaint type explicitly
+    const complaintType = document.getElementById('comptype').value;
+    
+    // Ensure that complaintType is set in the form data
     const formData = new FormData(event.target);
     
-    // Log the form data to check if the complaint type is being passed
-    console.log("Form Data: ", formData);
+    // Add the complaint type to the FormData if not already present
+    if (complaintType) {
+        formData.append('comptype', complaintType);
+    }
+
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec'; // Google Apps Script URL
     try {
