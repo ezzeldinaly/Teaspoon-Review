@@ -34,8 +34,8 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
     // Ensure that complaintType is set in the form data
     const formData = new FormData(event.target);
     
-    // Add the complaint type to the FormData if not already present
-    if (complaintType) {
+    // Check if 'comptype' exists in formData, otherwise append it
+    if (complaintType && !formData.has('comptype')) {
         formData.append('comptype', complaintType);
     }
 
