@@ -30,14 +30,14 @@
             <input type="email" id="email" name="email" required>
 
             <label for="dropdown">Type of Complaint:</label>
-            <select id="dropdown" name="options" required>
-                <option value="" disabled selected>Select an option</option>
-                <option value="Product Issue">Customer Service</option>
-                <option value="Service Issue">Drink Quality</option>
-                <option value="General Feedback">Store Cleanliness</option>
-                <option value="Other">Other</option>
-            </select>
-            
+                <select id="dropdown" name="complaint-type" required>
+                    <option value="" disabled selected>Select an option</option>
+                    <option value="Customer Service">Customer Service</option>
+                    <option value="Drink Quality">Drink Quality</option>
+                    <option value="Store Cleanliness">Store Cleanliness</option>
+                    <option value="Other">Other</option>
+                </select>
+
             <label for="feedback-message">Feedback:</label>
             <textarea id="feedback-message" name="message" rows="4" required></textarea>
 
