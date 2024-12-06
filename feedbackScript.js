@@ -26,21 +26,21 @@ document.addEventListener('DOMContentLoaded', async function () {
 });
 
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
-    event.preventDefault(); // Prevent the default form submission
+    event.preventDefault(); // Prevent default form submission
 
-    // Get the selected complaint type
-    const complaintType = document.getElementById('comptype').value;
-    console.log("Complaint Type Selected:", complaintType); // Log complaint type for debugging
+    const formData = new FormData(event.target);
 
-    const formData = new FormData(event.target); // Form data from the form
-
-    // Log all form data to ensure everything is being added
+    // Log all form data for debugging
+    console.log("Form data entries:");
     for (let pair of formData.entries()) {
-        console.log(pair[0] + ': ' + pair[1]);
+        console.log(`${pair[0]}: ${pair[1]}`);
     }
 
-    // Explicitly add the complaint type to the form data (if not already added)
-    formData.append('comptype', complaintType);
+    // Ensure 'comptype' is explicitly added
+    const complaintType = document.getElementById('comptype').value;
+    if (complaintType) {
+        formData.append('comptype', complaintType); // Add it explicitly for safety
+    }
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your actual script URL
     try {
