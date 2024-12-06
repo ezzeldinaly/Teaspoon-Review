@@ -28,18 +28,12 @@ document.addEventListener('DOMContentLoaded', async function () {
 document.getElementById('feedback-form').addEventListener('submit', async function (event) {
     event.preventDefault(); // Prevent default form submission
 
-    const formData = new FormData(event.target);
+    const formData = new FormData(event.target); // Automatically includes all form fields
 
     // Log all form data for debugging
     console.log("Form data entries:");
     for (let pair of formData.entries()) {
         console.log(`${pair[0]}: ${pair[1]}`);
-    }
-
-    // Ensure 'comptype' is explicitly added
-    const complaintType = document.getElementById('comptype').value;
-    if (complaintType) {
-        formData.append('comptype', complaintType); // Add it explicitly for safety
     }
 
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzddZX3zxKMc0sLvqb-NR3iWQcrwFywr82aFsI04cCLZfTIg9_6I3Ng1sAWVQx7Vx7D/exec';  // Replace with your actual script URL
@@ -62,8 +56,3 @@ document.getElementById('feedback-form').addEventListener('submit', async functi
         alert('An error occurred while submitting your feedback. Please try again.');
     }
 });
-
-
-
-
-
