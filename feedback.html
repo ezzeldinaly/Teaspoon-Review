@@ -1,14 +1,13 @@
 <html lang="en">
 <head>
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-8SFBJNK63Z"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-8SFBJNK63Z');
-</script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-8SFBJNK63Z"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-8SFBJNK63Z');
+    </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Feedback Form</title>
@@ -20,7 +19,6 @@
         <img src="img/teaspoon-logo-black-cmyk.png" alt="Teaspoon Logo" class="logo">
         <h1>We Value Your Feedback</h1>
         <form id="feedback-form">
-
             <input type="hidden" id="store-name" name="store-name">
             
             <label for="name">Name:</label>
@@ -30,13 +28,13 @@
             <input type="email" id="email" name="email" required>
 
             <label for="comptype">Type of Complaint:</label>
-                <select id="comptype" name="comptype" required>
-                    <option value="" disabled selected>Select an option</option>
-                    <option value="Customer Service">Customer Service</option>
-                    <option value="Drink Quality">Drink Quality</option>
-                    <option value="Store Cleanliness">Store Cleanliness</option>
-                    <option value="Other">Other</option>
-                </select>
+            <select id="comptype" name="comptype" required>
+                <option value="" disabled selected>Select an option</option>
+                <option value="Customer Service">Customer Service</option>
+                <option value="Drink Quality">Drink Quality</option>
+                <option value="Store Cleanliness">Store Cleanliness</option>
+                <option value="Other">Other</option>
+            </select>
 
             <label for="feedback-message">Feedback:</label>
             <textarea id="feedback-message" name="message" rows="4" required></textarea>
@@ -45,6 +43,6 @@
         </form>
         <a href="#" class="home-button">Return to Home</a>
     </div>
-     <script src="feedbackScript.js"></script> 
+    <script src="feedbackScript.js"></script> 
 </body>
 </html>
